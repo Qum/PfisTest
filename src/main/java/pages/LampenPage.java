@@ -10,10 +10,15 @@ public class LampenPage extends BasePage {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//ul/li/a[text()='Kinderzimmeraccessoires']")
+//	@FindBy(xpath = "//li/a[text()='Kinderzimmeraccessoires']")
+	@FindBy(xpath = "//ul[starts-with(@class,'style__SidebarMenu')]/li[7]")
 	private WebElement kinderzimmeraccessoiresBtn;
 
+
 	public void clickKinderzimmeraccessoiresBtn() {
-		kinderzimmeraccessoiresBtn.click();
+//		Actions act =  new Actions(driver);
+//				act.moveToElement(kinderzimmeraccessoiresBtn).perform();
+		waitElementVisability(kinderzimmeraccessoiresBtn).click();
+//		kinderzimmeraccessoiresBtn.click();
 	}
 }

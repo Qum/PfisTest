@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 
@@ -12,8 +11,7 @@ public class KinderzPage extends BasePage {
 		super(driver);
 	}
 
-	//div[@data-testid='full-quicklayer']/following-sibling::div/
-	@FindBy(xpath = "//span[contains(text(),'Korb STORAGE')]/parent::a")
+	@FindBy(xpath = "//span[contains(text(),'Holzspielzeug FARM')]/parent::a")
 	private WebElement lampaKotBlock;
 
 	@FindBy(xpath = "//i[@type='plus']/parent::button")
@@ -30,13 +28,14 @@ public class KinderzPage extends BasePage {
 		lampaKotBtn.click();
 		return this;
 	}
+
 	public KinderzPage	clickAddToCartBtn() {
 		addToCartBtn.click();
 		return this;
 	}
 
 	public KinderzPage moveToLampaKotBlock() {
-		Actions action = new Actions(driver);
+		jsExec.executeScript("window.scrollBy" + lampaKotBlock.getLocation());
 		action.moveToElement(lampaKotBlock).perform();
 		return this;
 	}

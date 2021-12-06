@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
+//import org.testng.annotations.Test;
 
 
 public class ContactsTest extends BaseTest {
@@ -9,6 +10,8 @@ public class ContactsTest extends BaseTest {
 	@Test
 	public void ContactNumberExistTest()  {
 		mainPage.clickOkCookiesBtn()
+				.clickCloseBonusUpBtn()
+				.clickClosePopUpBtn()
 				.clickKontaktsBtn();
 
 		Assert.assertEquals(CONTACTPAGETITLE, kontaktPage.getPageTitle());

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class KontaktPage extends BasePage {
 
-//	@FindBy(xpath = "//div[contains(@p='Hotline')]")
 	@FindBy(xpath = "//div/p/strong[contains(text(),'Hotline')]/a")
 	private WebElement pfoneNumber;
 
