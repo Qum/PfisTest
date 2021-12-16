@@ -1,9 +1,15 @@
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import config.Prop;
 import pages.KinderzPage;
@@ -17,7 +23,7 @@ import ru.qatools.properties.PropertyLoader;
 public class BaseTest {
 
 	protected Prop config;
-	protected WebDriver driver;
+	protected RemoteWebDriver driver;
 	protected MainPage mainPage;
 	protected LampenPage lampenPage;
 	protected KinderzPage kinderzPage;
@@ -26,12 +32,23 @@ public class BaseTest {
 
 
 	BaseTest() {
+		String os = System.getProperty("os.name");
+		if (os.contains("Windows")){
+			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+		else {
+			try {
+				driver = new RemoteWebDriver(new URL("http://localhost/wd/hub"), new ChromeOptions());
+			}
+			catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+		}
 		config = PropertyLoader.newInstance()
 				.populate(Prop.class);
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+
 //		System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-//
-		driver = new ChromeDriver();
 //		driver = new FirefoxDriver();
 
 		mainPage = new MainPage(driver);
@@ -41,7 +58,7 @@ public class BaseTest {
 		searchPage = new SearchPage(driver);
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 
 		driver.get("https://testpfisterch:Test@pfister.ch@q-ecom.pfister.ch");
 

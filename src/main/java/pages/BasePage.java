@@ -28,7 +28,7 @@ public class BasePage {
 	}
 
 	public WebElement waitElementClicable(WebElement elem){
-		return new WebDriverWait(driver, 15)
+		return new WebDriverWait(driver, 45)
 				.until(ExpectedConditions.visibilityOf(elem));
 
 	}

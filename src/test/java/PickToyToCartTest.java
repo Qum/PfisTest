@@ -20,7 +20,6 @@ public class PickToyToCartTest extends BaseTest {
 		kinderzPage.moveToLampaKotBlock()
 				.clickLampaKotBtn()
 				.clickAddToCartBtn();
-		System.out.println("<---> " + config.getBrowser());
 		Assert.assertEquals(2, mainPage.getCartitemsCount());
 	}
 }

@@ -13,7 +13,7 @@ public class MainPage extends BasePage {
 	@FindBy(xpath = "//div[starts-with(@class,'style__CookieText')]/following-sibling::button")
 	private WebElement okCookiesBtn;
 
-	@FindBy(xpath ="//div[starts-with(@class,'AccordionBodyNode')]/ul/li[10]")
+	@FindBy(xpath ="//div[starts-with(@class,'AccordionBodyNode')]/ul/li[10]/a")
 	private WebElement kontaktsBtn;
 
 	@FindBy(xpath ="//input[@type='search' and @name='searchTerm']")
@@ -54,9 +54,10 @@ public class MainPage extends BasePage {
 	}
 
 	public MainPage clickKontaktsBtn(){
-		jsExec.executeScript("window.scrollBy" + kontaktsBtn.getLocation());
+//		jsExec.executeScript("window.scrollBy" + kontaktsBtn.getLocation());
 //		waitElementClicable(kontaktsBtn).click();
-		action.moveToElement(kontaktsBtn).click().perform();
+//		action.moveToElement(kontaktsBtn).click().perform();
+		kontaktsBtn.click();
 		return this;
 	}
 
@@ -66,12 +67,12 @@ public class MainPage extends BasePage {
 	}
 
 	public MainPage clickClosePopUpBtn() {
-		waitElementVisability(closePopUpBtn).click();
+		waitElementClicable(closePopUpBtn).click();
 		return this;
 	}
 
 	public MainPage clickCloseBonusUpBtn() {
-		waitElementVisability(closeBonusUpBtn).click();
+		waitElementClicable(closeBonusUpBtn).click();
 		return this;
 	}
 
