@@ -9,7 +9,7 @@ public class PickToyToCartTest extends BaseTest {
 		mainPage
 				.clickOkCookiesBtn()
 				.clickClosePopUpBtn()
-				.clickCloseBonusUpBtn()
+//				.clickCloseBonusUpBtn()
 				.clickLampenBtn();
 //				.moveAndClickOnItemBlock()
 //				.clickIncreaseСounterItemsBtn()

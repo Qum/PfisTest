@@ -11,7 +11,8 @@ public class KinderzPage extends BasePage {
 		super(driver);
 	}
 
-	@FindBy(xpath = "//span[contains(text(),'Holzspielzeug FARM')]/parent::a")
+//	@FindBy(xpath = "//span[contains(text(),'Holzspielzeug FARM')]/parent::a")
+	@FindBy(xpath = "//div[starts-with(@class,'slick-track')]/div/div/div[starts-with(@class,'style__SliderProductWrapper')][2]/div")
 	private WebElement lampaKotBlock;
 
 	@FindBy(xpath = "//i[@type='plus']/parent::button")
