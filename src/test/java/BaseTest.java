@@ -39,7 +39,7 @@ public class BaseTest {
 		}
 		else {
 			try {
-				driver = new RemoteWebDriver(new URL("http://localhost/wd/hub"), new ChromeOptions());
+				driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), new ChromeOptions());
 			}
 			catch (MalformedURLException e) {
 				e.printStackTrace();
