@@ -33,18 +33,19 @@ public class BaseTest {
 
 	BaseTest() {
 		String os = System.getProperty("os.name");
-		if (os.contains("Windows")){
-			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-			driver = new ChromeDriver();
-		}
-		else {
+//		if (os.contains("Windows")){
+//			System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+//			driver = new ChromeDriver();
+//		}
+//		else {
 			try {
 				driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), new ChromeOptions());
+//				driver = new RemoteWebDriver(new URL("http://172.28.64.157:4444/wd/hub"), new ChromeOptions());
 			}
 			catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
-		}
+//		}
 		config = PropertyLoader.newInstance()
 				.populate(Prop.class);
 
